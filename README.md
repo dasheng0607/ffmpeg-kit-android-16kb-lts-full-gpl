@@ -13,7 +13,7 @@ Starting with **Android 15 (API 35)**, Google requires all native libraries (`.s
 * **The Solution:** This fork provides binaries rebuilt with **NDK r27d**, specifically configured for 16KB page support to ensure your app stays Play Store compliant.
 
 ### 🛑 Context: FFmpeg-Kit Retirement
-The official **FFmpeg-Kit** project has been **officially retired** and no longer receives updates. Since many production applications (like Lyrical Video Makers, Editors, and Converters) still rely on its robust API, this fork ensures continuity by providing the critical updates needed for 2026 Play Store requirements.
+The official **FFmpeg-Kit** project has been **officially retired** and no longer receives updates. Since many production applications (like Video Makers, Editors, and Converters) still rely on its robust API, this fork ensures continuity by providing the critical updates needed for 2026 Play Store requirements.
 
 ---
 
