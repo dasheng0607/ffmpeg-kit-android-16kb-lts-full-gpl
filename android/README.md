@@ -74,10 +74,11 @@ All libraries created by `android.sh` can be found under the `prebuilt` director
     ```yaml
     repositories {
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
-        implementation 'com.arthenica:ffmpeg-kit-full:6.0-2'
+          implementation 'com.github.VineshChauhan24:ffmpeg-kit-android-16kb-lts-full-gpl:v1.0.0'
     }
     ```
 
