@@ -1,0 +1,14 @@
+prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts/ffmpeg/lib
+includedir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts/ffmpeg/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 58.29.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -pthread -lm -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts/openssl/lib -lssl -lcrypto -latomic -landroid
+Cflags: -I${includedir}

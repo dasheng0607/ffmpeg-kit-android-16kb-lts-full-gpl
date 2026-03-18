@@ -1,0 +1,14 @@
+prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/freetype
+exec_prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/freetype
+libdir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/freetype/lib
+includedir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/freetype/include
+
+Name: FreeType 2
+URL: https://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 25.0.19
+Requires: zlib
+Requires.private: 
+Libs: -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/freetype/lib -lfreetype -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/libpng/lib
+Libs.private: 
+Cflags: -I${includedir}/freetype2

@@ -1,0 +1,12 @@
+prefix="/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts"/giflib
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: giflib
+Description: gif library
+Version: 5.2.2
+
+Requires:
+Libs: -L${libdir} -lgif
+Cflags: -I${includedir}

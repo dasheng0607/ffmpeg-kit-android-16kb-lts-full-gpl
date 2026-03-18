@@ -1,0 +1,8 @@
+libdir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm/libilbc/lib
+includedir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm/libilbc/include
+
+Name: libilbc
+Description: Internet Low Bitrate Codec (iLBC) library
+Version: 3.0.4
+Libs: -L${libdir} -lilbc
+Cflags: -I${includedir}/

@@ -1,0 +1,14 @@
+prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/ffmpeg/lib
+includedir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/ffmpeg/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 60.16.100
+Requires: 
+Requires.private: libavcodec >= 60.31.102, libswresample >= 4.12.100, libavutil >= 58.29.100
+Conflicts:
+Libs: -L${libdir}  -lavformat 
+Libs.private: -lm -latomic -L/Users/vineshchauhan/Library/Android/sdk/ndk/29.0.14206865/platforms/android-23/arch-arm/usr/lib -lz -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/openssl/lib -lssl -lcrypto
+Cflags: -I${includedir}

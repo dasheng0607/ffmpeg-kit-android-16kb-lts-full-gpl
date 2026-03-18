@@ -1,0 +1,12 @@
+prefix="/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts"/libiconv
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libiconv
+Description: Character set conversion library
+Version: 1.17
+
+Requires:
+Libs: -L${libdir} -liconv -lcharset
+Cflags: -I${includedir}

@@ -1,0 +1,12 @@
+prefix="/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts"/x265
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: x265
+Description: H.265/HEVC video encoder
+Version: 3.6
+
+Libs: -L${libdir} -lx265
+Libs.private: -lm -ldl -llog -lm -lc++_shared
+Cflags: -I${includedir}

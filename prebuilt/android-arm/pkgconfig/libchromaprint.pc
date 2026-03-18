@@ -1,0 +1,11 @@
+prefix="/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm"/chromaprint
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: chromaprint
+Description: Audio fingerprint library
+URL: http://acoustid.org/chromaprint
+Version: 1.6.0
+Libs: -L${libdir} -lchromaprint -lstdc++ -lm
+Cflags: -I${includedir}

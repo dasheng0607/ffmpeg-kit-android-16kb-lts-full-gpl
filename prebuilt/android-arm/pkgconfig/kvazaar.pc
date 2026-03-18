@@ -1,0 +1,11 @@
+prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm/kvazaar
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+incdir=${prefix}/include
+
+Name: libkvazaar
+Description: Open-source HEVC encoder
+Version: 2.3.2
+Libs: -L${libdir} -lkvazaar
+Libs.private: -pthread   
+Cflags: -I${incdir}

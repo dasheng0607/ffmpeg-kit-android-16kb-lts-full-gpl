@@ -1,0 +1,14 @@
+prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/ffmpeg
+exec_prefix=${prefix}
+libdir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/ffmpeg/lib
+includedir=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/ffmpeg/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 9.12.100
+Requires: 
+Requires.private: libswscale >= 7.5.100, libavformat >= 60.16.100, libavcodec >= 60.31.102, libswresample >= 4.12.100, libavutil >= 58.29.100
+Conflicts:
+Libs: -L${libdir}  -lavfilter 
+Libs.private: -pthread -lm -latomic -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/libvidstab/lib -lvidstab -lm -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/zimg/lib -lzimg -lc++_shared -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/freetype/lib -lfreetype -L/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm-lts/libpng/lib -lpng16
+Cflags: -I${includedir}

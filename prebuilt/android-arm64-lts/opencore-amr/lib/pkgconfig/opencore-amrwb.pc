@@ -1,0 +1,10 @@
+prefix=/Users/vineshchauhan/Downloads/FFMPEG-KIT/ffmpeg-kit-16KB/prebuilt/android-arm64-lts/opencore-amr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OpenCORE AMR-WB
+Description: Adaptive Multi-Rate Wideband speech codec library
+Version: 0.1.6
+Libs: -L${libdir} -lopencore-amrwb
+Cflags: -I${includedir}
