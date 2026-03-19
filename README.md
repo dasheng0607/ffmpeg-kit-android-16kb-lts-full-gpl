@@ -41,10 +41,13 @@ dependencyResolutionManagement {
     }
 }
 ```
-###Step 2: Add the dependency
-In your app/build.gradle file:
+
+### Step 2: Add the dependency
+In your **`app/build.gradle`** file:
 
 ```gradle
+
+
 dependencies {
     // Replace 'v1.0.0' with the latest release tag from GitHub
     implementation 'com.github.VineshChauhan24:ffmpeg-kit-android-16kb-lts-full-gpl:v1.0.0'
@@ -54,13 +57,14 @@ dependencies {
 📝 Verification
 To confirm that this library is correctly aligned for Android 15, you can run the following command on the native library (.so) file:
 
-```bash
+```Bash
+
+
 llvm-readelf -lW libffmpegkit.so | grep LOAD
 ```
 
 Expected Result: Look at the Align column. It must show 0x4000 (which equals 16384 bytes or 16KB). If it shows 0x1000, the library is 4KB and will crash on Android 15 devices.
 
-⚖️ License
+### ⚖️ License
 This project is licensed under GPL v3.0.
-
 Note: Because this build enables GPL-licensed libraries (such as x264 and x265), the resulting bundle is subject to the terms of the GNU General Public License v3.0.
