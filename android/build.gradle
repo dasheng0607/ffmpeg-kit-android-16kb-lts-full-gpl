@@ -1,7 +1,9 @@
+// Root build.gradle
 plugins {
+    // Defines the versions for the whole project without applying them here
     id 'com.android.application' version '8.5.1' apply false
     id 'com.android.library' version '8.5.1' apply false
-    id "com.vanniktech.maven.publish" version "0.34.0" apply false
+    id 'com.vanniktech.maven.publish' version '0.34.0' apply false
 }
 
 // Ensure the clean task uses the modern Provider API

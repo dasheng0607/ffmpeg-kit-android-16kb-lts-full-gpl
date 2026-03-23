@@ -1,16 +1,17 @@
 pluginManagement {
     repositories {
-        google()            // This is the missing piece
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
-
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        // Required for JitPack builds
+        maven { url "https://jitpack.io" }
     }
 }
 

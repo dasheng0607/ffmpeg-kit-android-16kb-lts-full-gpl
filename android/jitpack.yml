@@ -3,5 +3,5 @@ jdk:
 before_install:
   - chmod +x gradlew
 install:
-  # This runs the build from the root correctly
-  - ./gradlew :ffmpeg-kit-android-lib:publishToMavenLocal -Pgroup=com.github.VineshChauhan24 -Pversion=1.0.3
+  # This command forces JitPack to stay in the root and run the specific library task
+  - ./gradlew :ffmpeg-kit-android-lib:publishToMavenLocal -Pgroup=com.github.VineshChauhan24 -Pversion=1.0.5
