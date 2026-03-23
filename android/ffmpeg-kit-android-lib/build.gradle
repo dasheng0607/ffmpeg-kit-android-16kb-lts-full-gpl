@@ -1,84 +1,42 @@
-import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
-
 plugins {
     id "com.android.library"
     id "com.vanniktech.maven.publish"
 }
 
-def argArtifactName = 'ffmpeg-kit-android-16kb-lts-full-gpl'
-def argVersionName = '1.0.2'
-def argVersionCode = 2
-
 android {
-    if (project.android.hasProperty("namespace")) {
-        namespace 'com.arthenica.ffmpegkit'
-    }
-
+    namespace 'com.arthenica.ffmpegkit'
     compileSdk 35
-    ndkVersion "27.0.12077973"
 
     defaultConfig {
         minSdk 24
         targetSdk 35
-        versionCode argVersionCode
-        versionName "$argVersionName"
-        consumerProguardFiles "consumer-rules.pro"
-        archivesBaseName = argArtifactName
     }
 
     sourceSets {
         main {
-            // Points to your 16KB-aligned .so files
-            jniLibs.srcDirs = ["../libs"]
+            // This is the standard path we just created
+            jniLibs.srcDirs = ['src/main/jniLibs']
         }
     }
 
     packagingOptions {
         jniLibs {
-            // CRITICAL: Keeps libraries uncompressed for 16KB alignment
+            // CRITICAL: Must be true for 16KB alignment to work on Android 15
             useLegacyPackaging = true
         }
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-dependencies {
-    implementation 'com.arthenica:smart-exception-java:0.2.1'
 }
 
 mavenPublishing {
-    // FIX: This single line handles both the Android variant
-    // AND the Maven publication setup. No need for publishing {} block above.
-    configure(new AndroidSingleVariantLibrary("release", true, true))
+    // This will automatically find your jniLibs and put them in the AAR
+    configureBasedOnAppliedPlugins()
 
-    coordinates("com.github.VineshChauhan24", "$argArtifactName", "$argVersionName")
+    coordinates("com.github.VineshChauhan24", "ffmpeg-kit-android-16kb-lts-full-gpl", "1.0.2")
+}
 
-    pom {
-        name = "FFmpeg Android 16KB LTS Full GPL"
-        description = "16KB Page-Aligned FFmpeg for Android 15"
-        inceptionYear = "2026"
-        url = "https://github.com/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl"
-        licenses {
-            license {
-                name = "GNU General Public License v3.0"
-                url = "https://www.gnu.org/licenses/gpl-3.0.txt"
-            }
-        }
-        developers {
-            developer {
-                id = "VineshChauhan24"
-                name = "Vinesh Chauhan"
-            }
-        }
-    }
+dependencies {
+    // This is the missing link causing your 30 errors
+    implementation 'com.arthenica:smart-exception-java:0.2.1'
+
+    // If you have other local dependencies, they stay here
 }
