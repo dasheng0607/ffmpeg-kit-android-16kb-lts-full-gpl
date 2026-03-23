@@ -50,7 +50,7 @@ In your **`app/build.gradle`** file:
 
 dependencies {
     // Replace 'v1.0.0' with the latest release tag from GitHub
-    implementation 'com.github.VineshChauhan24:ffmpeg-kit-android-16kb-lts-full-gpl:v1.0.1'
+     implementation 'com.github.VineshChauhan24:ffmpeg-kit-android-16kb-lts-full-gpl:1.0.7'
 }
 ```
 
