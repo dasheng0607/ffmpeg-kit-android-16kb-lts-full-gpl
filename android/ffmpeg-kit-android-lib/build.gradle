@@ -5,30 +5,49 @@ plugins {
     id "com.vanniktech.maven.publish"
 }
 
-def argArtifactName = System.getenv('ARG_ARTIFACT_NAME') ?: 'ffmpeg-kit-lts-16kb'
-def argVersionName = System.getenv('ARG_VERSIOM_NAME') ?: '6.1.4'
-def argVersionCode = Integer.valueOf(System.env.ARG_VERSIOM_CODE ?: 60104)
+// Updated to match your specific repository naming
+def argArtifactName = 'ffmpeg-kit-android-16kb-lts-full-gpl'
+def argVersionName = '1.0.0'
+def argVersionCode = 1
 
 android {
     if (project.android.hasProperty("namespace")) {
         namespace 'com.arthenica.ffmpegkit'
     }
     compileSdk 35
+    // Ensure this matches your Mac Mini M2 NDK version
     ndkVersion "27.0.12077973"
 
     defaultConfig {
-        minSdk 23
+        minSdk 24 // Recommended for 16KB alignment
         targetSdk 35
         versionCode argVersionCode
         versionName "$argVersionName"
-        project.archivesBaseName = "ffmpeg-kit"
         consumerProguardFiles "consumer-rules.pro"
+
+        // This ensures the AAR keeps the correct name
+        archivesBaseName = argArtifactName
+    }
+
+    sourceSets {
+        main {
+            // This is the most important part:
+            // It tells Gradle to look for your 16KB-aligned .so files
+            jniLibs.srcDirs = ["../libs"]
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            // CRITICAL: Prevents Gradle from compressing .so files
+            // during the AAR creation process.
+            useLegacyPackaging = true
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -36,88 +55,43 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ["../libs"]
-        }
-    }
-
-    testOptions {
-        unitTests.returnDefaultValues = true
-        unitTests.all {
-            systemProperty 'enable.ffmpeg.kit.test.mode', 'true'
-        }
-    }
-
-    packagingOptions {
-        jniLibs {
-            // CRITICAL: Prevents Gradle from compressing .so files
-            // and breaking your 16KB alignment.
-            useLegacyPackaging = true
-        }
-    }
-
-    tasks.withType(Sign) {
-        enabled = false
-    }
-
-    // publishing {
-    //     singleVariant('release') {
-    //         withJavadocJar()
-    //         withSourcesJar()
-    //     }
-    // }
-}
-
-task javadoc(type: Javadoc) {
-    title = 'FFmpegKit'
-    destinationDir = file("${projectDir}/../../docs/android/javadoc")
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    source = android.sourceSets.main.java.srcDirs
-    configurations.implementation.setCanBeResolved(true)
-    classpath += configurations.implementation
 }
 
 dependencies {
+    // Keep essential dependencies for FFmpegKit to run
     implementation 'com.arthenica:smart-exception-java:0.2.1'
-    testImplementation "androidx.test.ext:junit:1.1.5"
-    testImplementation 'org.json:json:20230618'
 }
 
 mavenPublishing {
-  // the first parameter represennts which variant is published
-  // the second whether to publish a sources jar
-  // the third whether to publish a javadoc jar
-//   configure(new AndroidSingleVariantLibrary("release", true, true))
-    publishToMavenCentral()
-    signAllPublications()
+    // This helper from the vanniktech plugin sets up the POM correctly
+    configure(new AndroidSingleVariantLibrary("release", true, true))
 
-    coordinates("io.github.jamaismagic.ffmpeg", "$argArtifactName", "$argVersionName")
+    // Match your GitHub handle and repo name
+    coordinates("com.github.VineshChauhan24", "$argArtifactName", "$argVersionName")
 
     pom {
-        name = "FFMPEG Android 16KB"
-        description = "FFmpeg Kit for Android (Maven Package for https://github.com/JamaisMagic/ffmpeg-kit-16KB)."
-        inceptionYear = "2025"
-        url = "https://github.com/JamaisMagic/ffmpeg-kit-16KB"
+        name = "FFmpeg Android 16KB LTS Full GPL"
+        description = "16KB Page-Aligned FFmpeg for Android 15 (LTS Full GPL Variant)"
+        inceptionYear = "2026"
+        url = "https://github.com/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl"
+
         licenses {
             license {
-                name = "GNU LESSER GENERAL PUBLIC LICENSE Version 3"
-                url = "https://www.gnu.org/licenses/lgpl-3.0.txt"
-                distribution = "https://www.gnu.org/licenses/lgpl-3.0.txt"
+                name = "GNU General Public License v3.0"
+                url = "https://www.gnu.org/licenses/gpl-3.0.txt"
             }
         }
         developers {
             developer {
-                id = "JamaisMagic"
-                name = "JamaisNg"
-                url = "https://github.com/JamaisMagic"
+                id = "VineshChauhan24"
+                name = "Vinesh Chauhan"
+                url = "https://github.com/VineshChauhan24"
             }
         }
         scm {
-            url = "https://github.com/JamaisMagic/ffmpeg-kit-16KB"
-            connection = "scm:git@github.com:JamaisMagic/ffmpeg-kit-16KB.git"
-            developerConnection = "=scm:git@github.com:JamaisMagic/ffmpeg-kit-16KB.git"
+            connection = "scm:git:github.com/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl.git"
+            developerConnection = "scm:git:ssh://github.com/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl.git"
+            url = "https://github.com/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl"
         }
     }
 }
