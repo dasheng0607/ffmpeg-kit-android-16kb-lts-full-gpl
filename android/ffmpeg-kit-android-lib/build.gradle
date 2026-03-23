@@ -3,6 +3,9 @@ plugins {
     id "com.vanniktech.maven.publish"
 }
 
+def argVersionName = '1.0.7' // Set to 1.0.7
+def argVersionCode = 107
+
 android {
     namespace 'com.arthenica.ffmpegkit'
     compileSdk 35
