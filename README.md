@@ -1,4 +1,5 @@
 # 🎞️ FFmpeg-Kit Android 16KB (Full-GPL)
+https://jitpack.io/com/github/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl/1.0.7/
 
 [![Android 15 Compatible](https://img.shields.io/badge/Android-15%20(API%2035)-green.svg?style=for-the-badge&logo=android)](https://developer.android.com/about/versions/15)
 [![JitPack](https://img.shields.io/jitpack/v/github/VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl?style=for-the-badge)](https://jitpack.io/#VineshChauhan24/ffmpeg-kit-android-16kb-lts-full-gpl)
